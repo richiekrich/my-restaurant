@@ -1,0 +1,262 @@
+/* Variables & globals */
+:root {
+  --primary-color: #c9a66b;
+  --secondary-color: #f8f4e3;
+  --text-color: #fff;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --gold: #c9a66b;
+  --font-primary: 'Montserrat', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  color: var(--text-color);
+  line-height: 1.6;
+  background: url('../images/restaurant.jpg') center/cover fixed;
+  min-height: 100vh;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.hero:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 3rem 4rem;
+  border-radius: 2px;
+  border: 1px solid rgba(201, 166, 107, 0.3);
+  max-width: 600px;
+}
+
+.restaurant-name {
+  font-family: var(--font-primary);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.tagline {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
+}
+
+.divider:before,
+.divider:after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--gold);
+  margin: 0 15px;
+}
+
+.divider-icon {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.est {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-top: 1.5rem;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* Container for main sections */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.container.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 4rem;
+  padding: 3rem 1rem;
+}
+
+.info-item {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-5px);
+}
+
+.info-item h3 {
+  color: var(--gold);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-item p {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #fff;
+  font-weight: 300;
+}
+
+/* Grand Opening section */
+.grand-opening {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  margin-top: -5rem; /* Pull it up slightly to overlap with hero section */
+}
+
+.announcement-box {
+  background-color: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(201, 166, 107, 0.3);
+  border-radius: 2px;
+  padding: 3rem 4rem;
+  text-align: center;
+  max-width: 700px;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+  position: relative;
+}
+
+.announcement-box.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Create a decorative border outside the main border */
+.announcement-box::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid var(--gold);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.announcement-tag {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0.5rem 0;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.announcement-date {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  font-weight: 400;
+}
+
+.announcement-tagline {
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .grand-opening {
+    margin-top: -2rem;
+  }
+  
+  .announcement-box {
+    padding: 2rem;
+  }
+  
+  .announcement-title {
+    font-size: 3rem;
+  }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .restaurant-name {
+    font-size: 2.8rem;
+  }
+  
+  .hero-content {
+    padding: 2rem;
+  }
+  
+  .info-item h3 {
+    font-size: 2rem;
+  }
+  
+  .info-item p {
+    font-size: 1.3rem;
+  }
+}
